@@ -89,6 +89,13 @@
     </dependencyManagement>
 
     <build>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.6.2</version>
+            </extension>
+        </extensions>
         <plugins>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -168,7 +175,7 @@
                         <configuration>
                             <mainClass>${start-class}</mainClass>
                             <detail>true</detail>
-                            <imageName>${project.artifactId}</imageName>
+                            <imageName>${project.artifactId}-${os.detected.classifier}</imageName>
                             <outputDirectory>${basedir}/target/classes</outputDirectory>
                         </configuration>
                     </plugin>
