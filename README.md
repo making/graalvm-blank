@@ -1,4 +1,4 @@
-# Vanilla GraalVM Blank
+# A blank project for GraalVM
 
 Maven archetype to create a pre-configured maven project for a Vanilla GraalVM application (especially for CLI).
 
