@@ -8,7 +8,7 @@ Maven archetype to create a pre-configured maven project for a Vanilla GraalVM a
 mvn archetype:generate\
  -DarchetypeGroupId=am.ik.archetype\
  -DarchetypeArtifactId=graalvm-blank-archetype\
- -DarchetypeVersion=0.1.0
+ -DarchetypeVersion=0.1.1
 ```
 
 Example
@@ -17,7 +17,7 @@ Example
 mvn archetype:generate\
  -DarchetypeGroupId=am.ik.archetype\
  -DarchetypeArtifactId=graalvm-blank-archetype\
- -DarchetypeVersion=0.1.0\
+ -DarchetypeVersion=0.1.1\
  -DgroupId=com.example\
  -DartifactId=demo-cli\
  -Dversion=1.0.0-SNAPSHOT\
@@ -42,7 +42,7 @@ mvn archetype:generate\
 cd demo-cli
 chmod +x mvnw*
 ./mvnw clean package -Pgraal
-./target/classes/demo-cli 
+./target/classes/demo-cli-osx-x86_64
 ```
 
 ![image](https://user-images.githubusercontent.com/106908/68075492-b35eff00-fdeb-11e9-80a6-ea54ae6eaa3c.png)
