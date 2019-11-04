@@ -1,5 +1,6 @@
 package xxxxxx.yyyyyy.zzzzzz;
 
+import joptsimple.OptionException;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
@@ -13,14 +14,26 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         final OptionParser parser = new OptionParser();
-        final OptionSpec<Void> version = parser.acceptsAll(Arrays.asList("v", "version"));
-        final OptionSet options = parser.parse(args);
-        if (options.has(version)) {
-            printVersion();
-            return;
+        final OptionSpec<Void> version = parser.acceptsAll(Arrays.asList("v", "version"), "Print version");
+        final OptionSpec<Void> help = parser.acceptsAll(Arrays.asList("h", "help"), "Print help");
+        try {
+            final OptionSet options = parser.parse(args);
+
+            if (options.has(help)) {
+                parser.printHelpOn(System.out);
+                return;
+            }
+            if (options.has(version)) {
+                printVersion();
+                return;
+            }
+
+            AnsiConsole.systemInstall();
+            hello();
+        } catch (OptionException e) {
+            System.err.println(e.getMessage());
+            System.exit(1);
         }
-        AnsiConsole.systemInstall();
-        hello();
     }
 
     static void hello() {
