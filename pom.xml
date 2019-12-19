@@ -17,8 +17,9 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <start-class>xxxxxx.yyyyyy.zzzzzz.App</start-class>
+        <graal.version>19.2.1</graal.version>
     </properties>
 
     <licenses><!-- DELETE THIS LINE -->
@@ -55,14 +56,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.fusesource.jansi</groupId>
-            <artifactId>jansi</artifactId>
-            <version>1.18</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.jopt-simple</groupId>
-            <artifactId>jopt-simple</artifactId>
-            <version>6.0-alpha-3</version>
+            <groupId>com.oracle.substratevm</groupId>
+            <artifactId>svm</artifactId>
+            <version>${graal.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -137,24 +133,12 @@
         </profile>
         <profile>
             <id>graal</id>
-            <properties>
-                <graal.version>19.2.1</graal.version>
-            </properties>
-            <dependencies>
-            </dependencies>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>com.oracle.substratevm</groupId>
                         <artifactId>native-image-maven-plugin</artifactId>
                         <version>${graal.version}</version>
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.oracle.substratevm</groupId>
-                                <artifactId>svm</artifactId>
-                                <version>${graal.version}</version>
-                            </dependency>
-                        </dependencies>
                         <executions>
                             <execution>
                                 <goals>
